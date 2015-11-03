@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		921FC8381BE911D000DEE213 /* LogicalScreenDescriptorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921FC8371BE911D000DEE213 /* LogicalScreenDescriptorSpec.swift */; };
 		929DD7AC1BE68522002E8081 /* GIFKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 929DD7AB1BE68522002E8081 /* GIFKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		929DD7B31BE68523002E8081 /* GIFKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 929DD7A81BE68522002E8081 /* GIFKit.framework */; };
-		929DD7B81BE68523002E8081 /* GIFKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929DD7B71BE68523002E8081 /* GIFKitTests.swift */; };
 		929DD7C31BE68537002E8081 /* GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929DD7C21BE68537002E8081 /* GIF.swift */; };
 		929DD7C51BE6BA23002E8081 /* GIFDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929DD7C41BE6BA23002E8081 /* GIFDecoderTests.swift */; };
+		929DD7C71BE6BE28002E8081 /* GIFDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929DD7C61BE6BE28002E8081 /* GIFDecoder.swift */; };
+		929DD7D61BE6C370002E8081 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 929DD7D41BE6C370002E8081 /* Nimble.framework */; };
+		929DD7D71BE6C370002E8081 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 929DD7D51BE6C370002E8081 /* Quick.framework */; };
+		929DD7DA1BE6C392002E8081 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 929DD7D41BE6C370002E8081 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		929DD7DB1BE6C392002E8081 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 929DD7D51BE6C370002E8081 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,15 +29,32 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		929DD7D91BE6C389002E8081 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				929DD7DA1BE6C392002E8081 /* Nimble.framework in CopyFiles */,
+				929DD7DB1BE6C392002E8081 /* Quick.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		921FC8371BE911D000DEE213 /* LogicalScreenDescriptorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogicalScreenDescriptorSpec.swift; sourceTree = "<group>"; };
 		929DD7A81BE68522002E8081 /* GIFKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GIFKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		929DD7AB1BE68522002E8081 /* GIFKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GIFKit.h; sourceTree = "<group>"; };
 		929DD7AD1BE68522002E8081 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		929DD7B21BE68523002E8081 /* GIFKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GIFKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		929DD7B71BE68523002E8081 /* GIFKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFKitTests.swift; sourceTree = "<group>"; };
 		929DD7B91BE68523002E8081 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		929DD7C21BE68537002E8081 /* GIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIF.swift; sourceTree = "<group>"; };
 		929DD7C41BE6BA23002E8081 /* GIFDecoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFDecoderTests.swift; sourceTree = "<group>"; };
+		929DD7C61BE6BE28002E8081 /* GIFDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFDecoder.swift; sourceTree = "<group>"; };
+		929DD7D41BE6C370002E8081 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../Carthage/Build/Mac/Nimble.framework; sourceTree = "<group>"; };
+		929DD7D51BE6C370002E8081 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = ../Carthage/Build/Mac/Quick.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +70,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				929DD7B31BE68523002E8081 /* GIFKit.framework in Frameworks */,
+				929DD7D61BE6C370002E8081 /* Nimble.framework in Frameworks */,
+				929DD7D71BE6C370002E8081 /* Quick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +101,7 @@
 			children = (
 				929DD7AB1BE68522002E8081 /* GIFKit.h */,
 				929DD7C21BE68537002E8081 /* GIF.swift */,
+				929DD7C61BE6BE28002E8081 /* GIFDecoder.swift */,
 				929DD7AD1BE68522002E8081 /* Info.plist */,
 			);
 			path = GIFKit;
@@ -85,11 +110,21 @@
 		929DD7B61BE68523002E8081 /* GIFKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				929DD7B71BE68523002E8081 /* GIFKitTests.swift */,
-				929DD7B91BE68523002E8081 /* Info.plist */,
+				929DD7D81BE6C378002E8081 /* Frameworks */,
 				929DD7C41BE6BA23002E8081 /* GIFDecoderTests.swift */,
+				929DD7B91BE68523002E8081 /* Info.plist */,
+				921FC8371BE911D000DEE213 /* LogicalScreenDescriptorSpec.swift */,
 			);
 			path = GIFKitTests;
+			sourceTree = "<group>";
+		};
+		929DD7D81BE6C378002E8081 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				929DD7D41BE6C370002E8081 /* Nimble.framework */,
+				929DD7D51BE6C370002E8081 /* Quick.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,6 +166,7 @@
 				929DD7AE1BE68523002E8081 /* Sources */,
 				929DD7AF1BE68523002E8081 /* Frameworks */,
 				929DD7B01BE68523002E8081 /* Resources */,
+				929DD7D91BE6C389002E8081 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -201,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				929DD7C31BE68537002E8081 /* GIF.swift in Sources */,
+				929DD7C71BE6BE28002E8081 /* GIFDecoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,8 +245,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				929DD7B81BE68523002E8081 /* GIFKitTests.swift in Sources */,
 				929DD7C51BE6BA23002E8081 /* GIFDecoderTests.swift in Sources */,
+				921FC8381BE911D000DEE213 /* LogicalScreenDescriptorSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +390,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = GIFKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zachwaugh.GIFKitTests;
@@ -364,6 +406,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = GIFKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zachwaugh.GIFKitTests;
@@ -390,6 +437,7 @@
 				929DD7BE1BE68523002E8081 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		929DD7BF1BE68523002E8081 /* Build configuration list for PBXNativeTarget "GIFKitTests" */ = {
 			isa = XCConfigurationList;
@@ -398,6 +446,7 @@
 				929DD7C11BE68523002E8081 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
