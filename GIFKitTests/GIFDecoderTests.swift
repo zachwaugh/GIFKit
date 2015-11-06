@@ -13,44 +13,58 @@ import Nimble
 
 class GIFDecoderSpec: QuickSpec {
     override func spec() {
-//        describe(".hasValidSignature()") {
-//            context("when there is valid signature") {
-//                it("returns true") {
-//                    let data = "GIF89a".dataUsingEncoding(NSUTF8StringEncoding)!
-//                    let decoder = GIFDecoder(data: data)
-//                    expect(decoder.hasValidSignature()) == true
-//                }
-//            }
-//            
-//            context("when there is an invalid signature") {
-//                it("returns false") {
-//                    let data = "PNG89a".dataUsingEncoding(NSUTF8StringEncoding)!
-//                    let decoder = GIFDecoder(data: data)
-//                    expect(decoder.hasValidSignature()) == false
-//                }
-//            }
-//        }
-//        
-//        describe(".hasValidVersion()") {
-//            context("when version is valid") {
-//                it("returns true") {
-//                    var data = "GIF87a".dataUsingEncoding(NSUTF8StringEncoding)!
-//                    var decoder = GIFDecoder(data: data)
-//                    expect(decoder.hasValidVersion()) == true
-//                    
-//                    data = "GIF89a".dataUsingEncoding(NSUTF8StringEncoding)!
-//                    decoder = GIFDecoder(data: data)
-//                    expect(decoder.hasValidVersion()) == true
-//                }
-//            }
-//            
-//            context("when version is invalid") {
-//                it("returns false") {
-//                    let data = "GIF89b".dataUsingEncoding(NSUTF8StringEncoding)!
-//                    let decoder = GIFDecoder(data: data)
-//                    expect(decoder.hasValidVersion()) == false
-//                }
-//            }
-//        }
+        describe(".decode") {
+            context("with invalid signature") {
+                it("throws an invalid signature error") {
+                    var errorThrown = false
+                    
+                    let bytes: [UInt8] = [0xC8, 0x00, 0xC8, 0x00, 0xA2, 0x00, 0x00]
+                    let data = NSData(bytes: bytes, length: bytes.count)
+                    let decoder = GIFDecoder(data: data)
+                    do {
+                        try decoder.decode()
+                        fail("Decoding should have failed")
+                    } catch {
+                        errorThrown = true
+                    }
+                    
+                    expect(errorThrown).toEventually(beTrue())
+                }
+            }
+            
+            context("with invalid version") {
+                it("throws an invalid version error") {
+                    var errorThrown = false
+                    
+                    let bytes: [UInt8] = [0x47, 0x49, 0x46, 0x00, 0xA2, 0x00, 0x00]
+                    let data = NSData(bytes: bytes, length: bytes.count)
+                    let decoder = GIFDecoder(data: data)
+                    do {
+                        try decoder.decode()
+                        fail("Decoding should have failed")
+                    } catch let error {
+                        print("error: \(error)")
+                        errorThrown = true
+                    }
+                    
+                    expect(errorThrown).toEventually(beTrue())
+                }
+            }
+            
+            context("with valid gif") {
+                it("returns a gif") {
+                    let URL = NSBundle(forClass: self.dynamicType).URLForResource("test", withExtension: "gif")!
+                    let data = NSData(contentsOfURL: URL)!
+                    let decoder = GIFDecoder(data: data)
+                    
+                    do {
+                        try decoder.decode()
+                        expect(true)
+                    } catch {
+                        fail("Error shouldn't be thrown for valid gif!")
+                    }
+                }
+            }
+        }
     }
 }

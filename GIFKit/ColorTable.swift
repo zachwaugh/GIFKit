@@ -8,10 +8,14 @@
 
 import Foundation
 
-struct Color {
+struct Color: CustomStringConvertible {
     let red: Byte
     let green: Byte
     let blue: Byte
+    
+    var description: String {
+        return "(\(red), \(green), \(blue))"
+    }
 }
 
 struct ColorTable {

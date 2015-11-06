@@ -18,11 +18,11 @@ struct LogicalScreenDescriptor {
     init(data: NSData) {
         var dataStream = DataStream(data: data)
         
-        width = dataStream.takeUInt16()
-        height = dataStream.takeUInt16()
-        packedFields = dataStream.takeByte()
-        backgroundColorIndex = dataStream.takeUInt8()
-        pixelAspectRatio = dataStream.takeUInt8()
+        width = dataStream.takeUInt16()!
+        height = dataStream.takeUInt16()!
+        packedFields = dataStream.takeByte()!
+        backgroundColorIndex = dataStream.takeUInt8()!
+        pixelAspectRatio = dataStream.takeUInt8()!
     }
     
     var globalColorTableFlag: Bool {

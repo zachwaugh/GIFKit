@@ -10,13 +10,13 @@ import Foundation
 
 struct DataStream {
     let data: NSData
-    private var position: Int = 0
+    var position: Int = 0
     
     init(data: NSData) {
         self.data = data
     }
     
-    mutating func takeBool() -> Bool {
+    mutating func takeBool() -> Bool? {
         var value: Bool = false
         let length = sizeof(Bool)
         data.getBytes(&value, range: NSRange(location: position, length: length))
@@ -25,11 +25,11 @@ struct DataStream {
         return value
     }
     
-    mutating func takeByte() -> Byte {
+    mutating func takeByte() -> Byte? {
         return takeUInt8()
     }
     
-    mutating func takeUInt8() -> UInt8 {
+    mutating func takeUInt8() -> UInt8? {
         var value: UInt8 = 0
         let length = sizeof(UInt8)
         data.getBytes(&value, range: NSRange(location: position, length: length))
@@ -38,7 +38,7 @@ struct DataStream {
         return value
     }
     
-    mutating func takeUInt16() -> UInt16 {
+    mutating func takeUInt16() -> UInt16? {
         var value: UInt16 = 0
         let length = sizeof(UInt16)
         data.getBytes(&value, range: NSRange(location: position, length: length))
