@@ -9,6 +9,10 @@ A pure-Swift library decoding your friend and mine, the humble GIF. I've never w
 
 - [GIF Spec](http://www.w3.org/Graphics/GIF/spec-gif89a.txt)
 
+## License
+
+Released under the [MIT License](LICENSE)
+
 ## Created By
 
 Zach Waugh ([@zachwaugh](http://twitter.com/zachwaugh))
