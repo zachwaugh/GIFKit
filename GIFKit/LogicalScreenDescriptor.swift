@@ -40,4 +40,12 @@ struct LogicalScreenDescriptor {
     var globalColorTableSize: UInt8 {
         return packedFields & 0b00000111
     }
+    
+    var hasGlobalColorTable: Bool {
+        return globalColorTableFlag
+    }
+    
+    var globalColorTableBytes: UInt8 {
+        return UInt8(3 * pow(Double(2), Double(globalColorTableSize + 1)))
+    }
 }

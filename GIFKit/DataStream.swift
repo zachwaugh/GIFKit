@@ -11,6 +11,9 @@ import Foundation
 struct DataStream {
     let data: NSData
     var position: Int = 0
+    var atEndOfStream: Bool {
+        return position == data.length
+    }
     
     init(data: NSData) {
         self.data = data
@@ -23,10 +26,6 @@ struct DataStream {
         position += length
         
         return value
-    }
-    
-    mutating func takeByte() -> Byte? {
-        return takeUInt8()
     }
     
     mutating func takeUInt8() -> UInt8? {
@@ -47,7 +46,21 @@ struct DataStream {
         return value
     }
     
-    // MARK: - Low-level Data
+    mutating func takeByte() -> Byte? {
+        return takeUInt8()
+    }
+
+    mutating func takeBytes(length: Int) -> NSData? {
+        guard let bytes = peekBytes(length) else {
+            print("[gif decoder] invalid number of bytes!")
+            return nil
+        }
+        
+        position += length
+        return bytes
+    }
+    
+    // MARK: - Peek
     
     func peekBytes(length: Int) -> NSData? {
         return peekBytesWithRange(NSRange(location: position, length: length))
@@ -61,15 +74,5 @@ struct DataStream {
         }
         
         return data.subdataWithRange(range)
-    }
-    
-    mutating func seekBytes(length: Int) -> NSData? {
-        guard let bytes = peekBytes(length) else {
-            print("[gif decoder] invalid number of bytes!")
-            return nil
-        }
-        
-        position += length
-        return bytes
     }
 }

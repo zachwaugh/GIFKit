@@ -16,6 +16,7 @@ class LogicalScreenDescriptorSpec: QuickSpec {
             expect(logicalScreenDescriptor.colorResolution) == 2
             expect(logicalScreenDescriptor.sortFlag) == false
             expect(logicalScreenDescriptor.globalColorTableSize) == 2
+            expect(logicalScreenDescriptor.globalColorTableBytes) == 24
             expect(logicalScreenDescriptor.backgroundColorIndex) == 0
             expect(logicalScreenDescriptor.pixelAspectRatio) == 0
         }
