@@ -84,7 +84,9 @@ class GIFDecoder {
     // MARK: - Parsing
     
     func parseHeader() throws {
-        guard let data = dataStream.takeBytes(Size.Header) else {
+        print("- Header: \(dataStream.position)")
+
+        guard let data: NSData = dataStream.takeBytes(Size.Header) else {
             throw DecodingError.InvalidGIF
         }
         
@@ -96,10 +98,12 @@ class GIFDecoder {
         guard header.hasValidVersion() else {
             throw DecodingError.InvalidVersion
         }
+        print("  -> \(header)")
     }
     
     func parseLogicalScreenDescriptor() throws {
-        guard let data = dataStream.takeBytes(7) else {
+        print("- LogicalScreenDescriptor: \(dataStream.position)")
+        guard let data: NSData = dataStream.takeBytes(7) else {
             throw DecodingError.InvalidGIF
         }
         
@@ -109,10 +113,11 @@ class GIFDecoder {
         }
         
         self.logicalScreenDescriptor = logicalScreenDescriptor
+        print("  -> \(logicalScreenDescriptor)")
     }
     
     func parseGlobalColorTable(size: UInt8) {
-        guard let data = dataStream.takeBytes(Int(size)) else {
+        guard let data: NSData = dataStream.takeBytes(Int(size)) else {
             return
         }
         
@@ -122,25 +127,25 @@ class GIFDecoder {
     // MARK: - Data blocks
     
     func parseData() throws {
-        guard let byte = dataStream.takeByte() else {
-            print("[gif decoder] no more bytes!")
-            throw DecodingError.InvalidGIF
-        }
-        
-        print("- Data")
-        
-        switch byte {
-        case Label.ExtensionIntroducer:
-            print(" -> found extension introducer: \(byte)")
-            try parseExtension()
-        case Label.ImageDescriptor:
-            print(" -> found image descriptor: \(byte)")
-            try parseImageDescriptor()
-        case Label.Trailer:
-            try parseTrailer()
-        default:
-            print(" -> no block or trailer?: \(byte)")
-            throw DecodingError.InvalidGIF
+        while let byte = dataStream.takeByte() {
+            let value = String(format: "0x%02x", byte)
+            print("- Data loop: \(value), \(dataStream.position)")
+            
+            switch byte {
+            case Label.ExtensionIntroducer:
+                print("  -> found extension introducer: \(value)")
+                try parseExtension()
+            case Label.ImageDescriptor:
+                print("  -> found image descriptor: \(value)")
+                try parseImageDescriptor()
+            case Label.Trailer:
+                print("  -> found trailer \(value)")
+                try parseTrailer()
+                return
+            default:
+                print("  -> no block or trailer?: \(value)")
+                throw DecodingError.InvalidGIF
+            }
         }
     }
     
@@ -157,58 +162,66 @@ class GIFDecoder {
         case Label.CommentExtension: parseCommentExtension()
         default: print("-> unhandled block: \(byte)")
         }
-        
-        try parseData()
     }
     
-    func parseDataSubBlocks() {
-        guard let byte = dataStream.takeByte() else {
-            print("[gif decoder] no more bytes!")
-            return
+    func parseDataSubBlocks() -> [[Byte]] {
+        print("- DataSubBlocks: \(dataStream.position)")
+        
+        var blocks: [[Byte]] = []
+        
+        while let byte = dataStream.takeByte() {
+            if byte != Label.BlockTerminator {
+                let block: [Byte] = dataStream.takeBytes(Int(byte))!
+                blocks.append(block)
+            } else {
+                print("  -> found terminator: \(dataStream.position)")
+                break
+            }
         }
         
-        print("- DataSubBlocks, size: \(byte)")
-        if byte != Label.BlockTerminator {
-            dataStream.takeBytes(Int(byte))
-            parseDataSubBlocks()
-        } else {
-            print(" -> found terminator")
-        }
+        return blocks
     }
     
     func parseGraphicControlExtension() {
         print("- GraphicControlExtension: \(dataStream.position)")
-        let bytes = dataStream.takeBytes(Size.GraphicControlExtension)
-        print("  -> \(bytes)")
+        let size = dataStream.takeByte()!
+        let graphicControlExtension = GraphicControlExtension(data: dataStream.takeBytes(Int(size))!)
+        dataStream.takeByte()! // skip terminator
+        
+        print("  -> \(graphicControlExtension)")
     }
     
     func parseTableBasedImage() throws {
-        let _ = dataStream.takeByte()
-        try parseImageData()
-    }
-    
-    func parseImageData() throws {
-        parseDataSubBlocks()
-        try parseData()
+        print("- TableBasedImageData: \(dataStream.position)")
+
+        let minimumCodeSize = dataStream.takeByte()!
+        print("  -> LZW Minimum Code size: \(minimumCodeSize)")
+
+        let imageBytes = parseDataSubBlocks().flatMap({ $0 }).count
+        print("  -> image data bytes: \(imageBytes)")
     }
     
     func parseImageDescriptor() throws {
         print("- ImageDescriptor: \(dataStream.position)")
-        let bytes = dataStream.takeBytes(Size.ImageDescriptor)
-        print(" -> bytes: \(bytes)")
+        let bytes: [Byte] = dataStream.takeBytes(Size.ImageDescriptor)!
+        let imageDescriptor = ImageDescriptor(data: NSData(bytes: bytes, length: bytes.count))
+        print(" -> \(imageDescriptor)")
         
         try parseTableBasedImage()
     }
     
-    func parsePlainTextExtension() {
-        print("- PlainTextExtension: \(dataStream.position)")
-    }
-    
     func parseApplicationExtension() {
         print("- ApplicationExtension: \(dataStream.position)")
-        let bytes = dataStream.takeBytes(12)
-        print(" -> \(bytes)")
-        parseDataSubBlocks()
+        if let blockSize = dataStream.takeByte(), bytes: [Byte] = dataStream.takeBytes(Int(blockSize)) {
+            let applicationExtension = ApplicationExtension(bytes: bytes)
+            print(" -> \(applicationExtension)")
+        }
+        let bytes = parseDataSubBlocks().flatMap({ $0 }).count
+        print("  -> sub-blocks: \(bytes) bytes")
+    }
+    
+    func parsePlainTextExtension() {
+        print("- PlainTextExtension: \(dataStream.position)")
     }
     
     func parseCommentExtension() {

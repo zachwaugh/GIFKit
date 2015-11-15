@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92181B101BF59B4800C75C06 /* ApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92181B0F1BF59B4800C75C06 /* ApplicationExtension.swift */; };
 		9219EAE81BEC483900149F29 /* test.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9219EAE71BEC483900149F29 /* test.gif */; };
 		9219EAEA1BEC4D7500149F29 /* ColorTableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9219EAE91BEC4D7500149F29 /* ColorTableSpec.swift */; };
 		9219EAEC1BEC52F600149F29 /* DataStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9219EAEB1BEC52F600149F29 /* DataStream.swift */; };
@@ -15,6 +16,8 @@
 		9219EAF31BEC538300149F29 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9219EAF21BEC538300149F29 /* Header.swift */; };
 		9219EAF51BEC539B00149F29 /* ColorTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9219EAF41BEC539B00149F29 /* ColorTable.swift */; };
 		921FC8381BE911D000DEE213 /* LogicalScreenDescriptorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921FC8371BE911D000DEE213 /* LogicalScreenDescriptorSpec.swift */; };
+		927959261BF784AC00FA71C4 /* ImageDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927959251BF784AC00FA71C4 /* ImageDescriptor.swift */; };
+		927959281BF8EBC300FA71C4 /* GraphicControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927959271BF8EBC300FA71C4 /* GraphicControlExtension.swift */; };
 		929DD7AC1BE68522002E8081 /* GIFKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 929DD7AB1BE68522002E8081 /* GIFKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		929DD7B31BE68523002E8081 /* GIFKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 929DD7A81BE68522002E8081 /* GIFKit.framework */; };
 		929DD7C31BE68537002E8081 /* GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929DD7C21BE68537002E8081 /* GIF.swift */; };
@@ -51,6 +54,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		92181B0F1BF59B4800C75C06 /* ApplicationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationExtension.swift; sourceTree = "<group>"; };
 		9219EAE71BEC483900149F29 /* test.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = test.gif; sourceTree = "<group>"; };
 		9219EAE91BEC4D7500149F29 /* ColorTableSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableSpec.swift; sourceTree = "<group>"; };
 		9219EAEB1BEC52F600149F29 /* DataStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStream.swift; sourceTree = "<group>"; };
@@ -59,6 +63,8 @@
 		9219EAF21BEC538300149F29 /* Header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		9219EAF41BEC539B00149F29 /* ColorTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTable.swift; sourceTree = "<group>"; };
 		921FC8371BE911D000DEE213 /* LogicalScreenDescriptorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogicalScreenDescriptorSpec.swift; sourceTree = "<group>"; };
+		927959251BF784AC00FA71C4 /* ImageDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDescriptor.swift; sourceTree = "<group>"; };
+		927959271BF8EBC300FA71C4 /* GraphicControlExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphicControlExtension.swift; sourceTree = "<group>"; };
 		929DD7A81BE68522002E8081 /* GIFKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GIFKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		929DD7AB1BE68522002E8081 /* GIFKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GIFKit.h; sourceTree = "<group>"; };
 		929DD7AD1BE68522002E8081 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -106,6 +112,9 @@
 				9219EAF21BEC538300149F29 /* Header.swift */,
 				9219EAF01BEC536C00149F29 /* LogicalScreenDescriptor.swift */,
 				9219EAF41BEC539B00149F29 /* ColorTable.swift */,
+				92181B0F1BF59B4800C75C06 /* ApplicationExtension.swift */,
+				927959251BF784AC00FA71C4 /* ImageDescriptor.swift */,
+				927959271BF8EBC300FA71C4 /* GraphicControlExtension.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -276,8 +285,11 @@
 			files = (
 				9219EAF31BEC538300149F29 /* Header.swift in Sources */,
 				929DD7C31BE68537002E8081 /* GIF.swift in Sources */,
+				927959261BF784AC00FA71C4 /* ImageDescriptor.swift in Sources */,
 				929DD7C71BE6BE28002E8081 /* GIFDecoder.swift in Sources */,
+				92181B101BF59B4800C75C06 /* ApplicationExtension.swift in Sources */,
 				9219EAF11BEC536C00149F29 /* LogicalScreenDescriptor.swift in Sources */,
+				927959281BF8EBC300FA71C4 /* GraphicControlExtension.swift in Sources */,
 				9219EAF51BEC539B00149F29 /* ColorTable.swift in Sources */,
 				9219EAEC1BEC52F600149F29 /* DataStream.swift in Sources */,
 			);

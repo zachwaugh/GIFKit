@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Header {
+struct Header: CustomStringConvertible {
     private let dataStream: DataStream
     
     init(data: NSData) {
@@ -56,5 +56,9 @@ struct Header {
     
     func isValidVersion(version: String) -> Bool {
         return version == "87a" || version == "89a"
+    }
+    
+    var description: String {
+        return "<Header signature: \(signature), version: \(version)>"
     }
 }
