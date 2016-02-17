@@ -53,7 +53,7 @@ class GIFDecoderSpec: QuickSpec {
             
             context("with valid gif") {
                 it("returns a gif") {
-                    let URL = NSBundle(forClass: self.dynamicType).URLForResource("test", withExtension: "gif")!
+                    let URL = NSBundle(forClass: self.dynamicType).URLForResource("red", withExtension: "gif")!
                     let data = NSData(contentsOfURL: URL)!
                     let decoder = GIFDecoder(data: data)
                     
@@ -65,6 +65,21 @@ class GIFDecoderSpec: QuickSpec {
                     }
                 }
             }
+            
+//            context("with animated gif") {
+//                it("returns an animated gif") {
+//                    let URL = NSBundle(forClass: self.dynamicType).URLForResource("mind-blown", withExtension: "gif")!
+//                    let data = NSData(contentsOfURL: URL)!
+//                    let decoder = GIFDecoder(data: data)
+//                    
+//                    do {
+//                        try decoder.decode()
+//                        expect(true)
+//                    } catch {
+//                        fail("Error shouldn't be thrown for valid gif!")
+//                    }
+//                }
+//            }
         }
     }
 }

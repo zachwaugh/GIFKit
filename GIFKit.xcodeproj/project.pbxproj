@@ -18,10 +18,13 @@
 		921FC8381BE911D000DEE213 /* LogicalScreenDescriptorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921FC8371BE911D000DEE213 /* LogicalScreenDescriptorSpec.swift */; };
 		927959261BF784AC00FA71C4 /* ImageDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927959251BF784AC00FA71C4 /* ImageDescriptor.swift */; };
 		927959281BF8EBC300FA71C4 /* GraphicControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927959271BF8EBC300FA71C4 /* GraphicControlExtension.swift */; };
+		9279592A1BF9379600FA71C4 /* DataStreamSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927959291BF9379600FA71C4 /* DataStreamSpec.swift */; };
+		928A7BDD1BFEB4DE00FE2E1C /* mind-blown.gif in Resources */ = {isa = PBXBuildFile; fileRef = 928A7BDC1BFEB4DE00FE2E1C /* mind-blown.gif */; };
+		928AEE271C226BDC00200FCC /* red.gif in Resources */ = {isa = PBXBuildFile; fileRef = 928AEE261C226BDC00200FCC /* red.gif */; };
 		929DD7AC1BE68522002E8081 /* GIFKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 929DD7AB1BE68522002E8081 /* GIFKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		929DD7B31BE68523002E8081 /* GIFKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 929DD7A81BE68522002E8081 /* GIFKit.framework */; };
 		929DD7C31BE68537002E8081 /* GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929DD7C21BE68537002E8081 /* GIF.swift */; };
-		929DD7C51BE6BA23002E8081 /* GIFDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929DD7C41BE6BA23002E8081 /* GIFDecoderTests.swift */; };
+		929DD7C51BE6BA23002E8081 /* GIFDecoderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929DD7C41BE6BA23002E8081 /* GIFDecoderSpec.swift */; };
 		929DD7C71BE6BE28002E8081 /* GIFDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929DD7C61BE6BE28002E8081 /* GIFDecoder.swift */; };
 		929DD7D61BE6C370002E8081 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 929DD7D41BE6C370002E8081 /* Nimble.framework */; };
 		929DD7D71BE6C370002E8081 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 929DD7D51BE6C370002E8081 /* Quick.framework */; };
@@ -65,13 +68,16 @@
 		921FC8371BE911D000DEE213 /* LogicalScreenDescriptorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogicalScreenDescriptorSpec.swift; sourceTree = "<group>"; };
 		927959251BF784AC00FA71C4 /* ImageDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDescriptor.swift; sourceTree = "<group>"; };
 		927959271BF8EBC300FA71C4 /* GraphicControlExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphicControlExtension.swift; sourceTree = "<group>"; };
+		927959291BF9379600FA71C4 /* DataStreamSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStreamSpec.swift; sourceTree = "<group>"; };
+		928A7BDC1BFEB4DE00FE2E1C /* mind-blown.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "mind-blown.gif"; sourceTree = "<group>"; };
+		928AEE261C226BDC00200FCC /* red.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = red.gif; sourceTree = "<group>"; };
 		929DD7A81BE68522002E8081 /* GIFKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GIFKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		929DD7AB1BE68522002E8081 /* GIFKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GIFKit.h; sourceTree = "<group>"; };
 		929DD7AD1BE68522002E8081 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		929DD7B21BE68523002E8081 /* GIFKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GIFKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		929DD7B91BE68523002E8081 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		929DD7C21BE68537002E8081 /* GIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIF.swift; sourceTree = "<group>"; };
-		929DD7C41BE6BA23002E8081 /* GIFDecoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFDecoderTests.swift; sourceTree = "<group>"; };
+		929DD7C41BE6BA23002E8081 /* GIFDecoderSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFDecoderSpec.swift; sourceTree = "<group>"; };
 		929DD7C61BE6BE28002E8081 /* GIFDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFDecoder.swift; sourceTree = "<group>"; };
 		929DD7D41BE6C370002E8081 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../Carthage/Build/Mac/Nimble.framework; sourceTree = "<group>"; };
 		929DD7D51BE6C370002E8081 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = ../Carthage/Build/Mac/Quick.framework; sourceTree = "<group>"; };
@@ -101,7 +107,9 @@
 		9219EAE61BEC481F00149F29 /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
+				928AEE261C226BDC00200FCC /* red.gif */,
 				9219EAE71BEC483900149F29 /* test.gif */,
+				928A7BDC1BFEB4DE00FE2E1C /* mind-blown.gif */,
 			);
 			name = Fixtures;
 			sourceTree = "<group>";
@@ -156,10 +164,11 @@
 				9219EAE61BEC481F00149F29 /* Fixtures */,
 				929DD7D81BE6C378002E8081 /* Frameworks */,
 				929DD7B91BE68523002E8081 /* Info.plist */,
-				929DD7C41BE6BA23002E8081 /* GIFDecoderTests.swift */,
+				929DD7C41BE6BA23002E8081 /* GIFDecoderSpec.swift */,
 				9219EAED1BEC532F00149F29 /* HeaderSpec.swift */,
 				921FC8371BE911D000DEE213 /* LogicalScreenDescriptorSpec.swift */,
 				9219EAE91BEC4D7500149F29 /* ColorTableSpec.swift */,
+				927959291BF9379600FA71C4 /* DataStreamSpec.swift */,
 			);
 			path = GIFKitTests;
 			sourceTree = "<group>";
@@ -272,7 +281,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				928AEE271C226BDC00200FCC /* red.gif in Resources */,
 				9219EAE81BEC483900149F29 /* test.gif in Resources */,
+				928A7BDD1BFEB4DE00FE2E1C /* mind-blown.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,9 +310,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				929DD7C51BE6BA23002E8081 /* GIFDecoderTests.swift in Sources */,
+				929DD7C51BE6BA23002E8081 /* GIFDecoderSpec.swift in Sources */,
 				921FC8381BE911D000DEE213 /* LogicalScreenDescriptorSpec.swift in Sources */,
 				9219EAEA1BEC4D7500149F29 /* ColorTableSpec.swift in Sources */,
+				9279592A1BF9379600FA71C4 /* DataStreamSpec.swift in Sources */,
 				9219EAEE1BEC532F00149F29 /* HeaderSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

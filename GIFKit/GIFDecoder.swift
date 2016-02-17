@@ -58,6 +58,7 @@ enum DecodingError: ErrorType {
     case InvalidGIF
     case InvalidSignature
     case InvalidVersion
+    case UnexpectedEndOfFile
 }
 
 class GIFDecoder {
@@ -75,7 +76,7 @@ class GIFDecoder {
             try parseLogicalScreenDescriptor()
             try parseData()
             
-            return GIF()
+            return GIF(frames: [])
         } catch let error {
             throw error
         }
@@ -109,6 +110,7 @@ class GIFDecoder {
         
         let logicalScreenDescriptor = LogicalScreenDescriptor(data: data)
         if logicalScreenDescriptor.hasGlobalColorTable {
+            print("  -> has global color table of size: \(logicalScreenDescriptor.globalColorTableSize), bytes: \(logicalScreenDescriptor.globalColorTableBytes)")
             parseGlobalColorTable(logicalScreenDescriptor.globalColorTableBytes)
         }
         
@@ -122,6 +124,7 @@ class GIFDecoder {
         }
         
         globalColorTable = ColorTable(data: data)
+        print("- GlobalColorTable: \(globalColorTable)")
     }
     
     // MARK: - Data blocks
@@ -141,7 +144,6 @@ class GIFDecoder {
             case Label.Trailer:
                 print("  -> found trailer \(value)")
                 try parseTrailer()
-                return
             default:
                 print("  -> no block or trailer?: \(value)")
                 throw DecodingError.InvalidGIF
@@ -191,16 +193,6 @@ class GIFDecoder {
         print("  -> \(graphicControlExtension)")
     }
     
-    func parseTableBasedImage() throws {
-        print("- TableBasedImageData: \(dataStream.position)")
-
-        let minimumCodeSize = dataStream.takeByte()!
-        print("  -> LZW Minimum Code size: \(minimumCodeSize)")
-
-        let imageBytes = parseDataSubBlocks().flatMap({ $0 }).count
-        print("  -> image data bytes: \(imageBytes)")
-    }
-    
     func parseImageDescriptor() throws {
         print("- ImageDescriptor: \(dataStream.position)")
         let bytes: [Byte] = dataStream.takeBytes(Size.ImageDescriptor)!
@@ -208,6 +200,16 @@ class GIFDecoder {
         print(" -> \(imageDescriptor)")
         
         try parseTableBasedImage()
+    }
+    
+    func parseTableBasedImage() throws {
+        print("- TableBasedImageData: \(dataStream.position)")
+        
+        let minimumCodeSize = dataStream.takeByte()!
+        print("  -> LZW Minimum Code size: \(minimumCodeSize)")
+        
+        let imageBytes = parseDataSubBlocks().flatMap({ $0 })
+        print("  -> image data bytes: (\(imageBytes.count)) - \(imageBytes)")
     }
     
     func parseApplicationExtension() {
@@ -233,7 +235,23 @@ class GIFDecoder {
     func parseTrailer() throws {
         guard dataStream.atEndOfStream else {
             print(" -> found trailer but not at end of stream!")
-            throw DecodingError.InvalidGIF
+            throw DecodingError.UnexpectedEndOfFile
+        }
+    }
+}
+
+struct LZWDecompressor {
+    let data: NSData
+    var codeSize: Int
+    
+    func decompress() {
+        var bytes = [Byte](count: data.length, repeatedValue: 0)
+        data.getBytes(&bytes, length: data.length)
+        
+        for byte in bytes {
+            let bits = byte & 0b1110000
+            let nextBits = byte & 0b00011100
+            let more = byte & 0b00000011 << 0
         }
     }
 }

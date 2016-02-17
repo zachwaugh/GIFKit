@@ -8,5 +8,15 @@
 
 import Foundation
 
+struct GIFFrame {
+    let delay: CGFloat
+    let data: NSData
+}
+
 struct GIF {
+    let frames: [GIFFrame]
+    
+    var isAnimated: Bool {
+        return frames.count > 1
+    }
 }

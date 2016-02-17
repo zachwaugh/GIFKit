@@ -25,6 +25,10 @@ struct DataStream {
     }
     
     mutating func takeBool() -> Bool? {
+        guard hasAvailableBytes(1) else {
+            return nil
+        }
+        
         var value: Bool = false
         let length = sizeof(Bool)
         data.getBytes(&value, range: NSRange(location: position, length: length))
@@ -34,6 +38,10 @@ struct DataStream {
     }
     
     mutating func takeUInt8() -> UInt8? {
+        guard hasAvailableBytes(1) else {
+            return nil
+        }
+        
         var value: UInt8 = 0
         let length = sizeof(UInt8)
         data.getBytes(&value, range: NSRange(location: position, length: length))
@@ -43,6 +51,10 @@ struct DataStream {
     }
     
     mutating func takeUInt16() -> UInt16? {
+        guard hasAvailableBytes(2) else {
+            return nil
+        }
+        
         var value: UInt16 = 0
         let length = sizeof(UInt16)
         data.getBytes(&value, range: NSRange(location: position, length: length))
